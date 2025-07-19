@@ -159,11 +159,15 @@
       [Most script files],
       [Very convenient for future users of the code and portable @why-comment-headers],
 
-      [`.license` Files], [n], [*---*], [],
+      [`.license` Files],
+      [n],
+      [*---*],
+      [For every file in the `Assets/` directory, Unity adds a corresponding `.meta` file.  If we added a `.license` file for nearly every asset file, Unity would add thousands of `.meta` files which would clutter up the repository.  Additionally, Unity allows assets to be moved within it's editor easily, but doing so would leave behind old `.license` files.],
+
       [`REUSE.toml`],
       [y],
       [Art, shaders, some script files, material files, animation files, models, images, fonts],
-      [],
+      [Allowed for bulk licensing #footnote([#link("https://reuse.software/faq/#bulk-licenses")]) of files],
     ),
     1,
   )
