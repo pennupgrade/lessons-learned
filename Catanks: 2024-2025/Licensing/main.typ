@@ -8,9 +8,31 @@
   "{3:i}.",
 ))
 
-#show ref: it => {
-  link(it.target)[*#it*]
-}
+#let rlink(goto) = link(goto.target)[*#goto*]
+
+#let yes_no_table(the_table, used_col_num) = [
+  #show table.cell.where(y: 0): it => {
+    set text(weight: "bold")
+    it
+  }
+  #show table.cell.where(x: used_col_num): it => {
+    if it.y != 0 {
+      if it.body == [y] [
+        #show "y": [#emoji.checkmark.box]
+        #it
+      ] else if it.body == [n] [
+        #show "n": [#emoji.crossmark]
+        #it
+      ] else [#it]
+    } else {
+      it
+    }
+  }
+  #show table.cell.where(x: 0): it => {
+    it
+  }
+  #the_table
+]
 
 #let the_author = "exaCORE42"
 #show link: set text(fill: blue)
@@ -35,28 +57,8 @@
   = Choosing a License
   There are many different open source licenses to choose from.  When licensing Catanks, here is an overview of the options we considered.
 
-  #[
-    #show table.cell.where(y: 0): it => {
-      set text(weight: "bold")
-      it
-    }
-    #show table.cell.where(x: 1): it => {
-      if it.y != 0 {
-        if it.body == [y] [
-          #show "y": [#emoji.checkmark.box]
-          #it
-        ] else if it.body == [n] [
-          #show "n": [#emoji.crossmark]
-          #it
-        ] else [#it]
-      } else {
-        it
-      }
-    }
-    #show table.cell.where(x: 0): it => {
-      it
-    }
-    #table(
+  #yes_no_table(
+    table(
       columns: (2fr, 0.8fr, 4fr, 4fr),
       align: center + horizon,
 
@@ -75,12 +77,13 @@
       [y],
       [The CC BY-SA 4.0 license allows others to use the art but requires them to also license any modifications under the same license (or a compatible license).  Additionally, it requires that anyone who uses the art to give credit for producing the original work to the authors of the orginal work.],
       [We chose to license UPGRADE-contributed art is licesed under the CC BY-SA 4.0 license because it allows our art to be used freely, but ensures that credit is given to UPGRADE's artists.  Additionally, it ensures that any modifications to our art will contribute back to the open source ecosystem.],
-    )
-  ]
+    ),
+    1,
+  )
 
   = Before Development
   == License Agreement
-  Before each person contributes code to the project for the first time, they should sign or agree to a licensing agreement that allows their work to be licensed under the chosen license(s).  An example license agreement can be found at @appendix-license-agreement.
+  Before each person contributes code to the project for the first time, they should sign or agree to a licensing agreement that allows their work to be licensed under the chosen license(s).  An example license agreement can be found at #rlink[@appendix-license-agreement].
 
   == Project Layout
   #let folder_name(name) = raw("Assets/" + name + "/")
@@ -110,15 +113,15 @@
   + Code that you found on a forum or tutorial
   + Code that was authored in part or in full by a person who has not signed the license agreement
 
-  See @reusing-code for cases when you would be allowed to use code that isn't your own and how to license it.
+  See #rlink[@reusing-code] for cases when you would be allowed to use code that isn't your own and how to license it.
 
   == Art
-  See @reusing-art for information about how to properly license art.
+  See #rlink[@reusing-art] for information about how to properly license art.
 
   To use art (or shaders) from a #link(<properly-licensed-upgrade>)[properly licensed UPGRADE game], place the art in the directory #folder_name_reused("<type of art>", suffix: "<filename>")) and include a text file with a link to the file on Github in that directory.
   === Sound Effects
   + If you are making your own sound effects from scratch place them in #folder_name_original("Audio")
-  + If you are not making your own sound effects, only use sounds from #link("https://freesound.org")[freesound.org].  Make sure that any sounds you use are licensed under (see @freesound_licensing_loc for where to look for this information):
+  + If you are not making your own sound effects, only use sounds from #link("https://freesound.org")[freesound.org].  Make sure that any sounds you use are licensed under (see #rlink[@freesound_licensing_loc] for where to look for this information):
     + `Creative Commons 0`
     + `Attribution 4.0` (CC BY 4.0)
     + `Attribution 3.0` (CC BY 3.0) if needed, but preferably one of the above
@@ -134,9 +137,45 @@
   === Other Art
   For other art including 3D models and 2D images, only use UPGRADE made art.
 
+  = Licensing Tools: REUSE
+  In order to license Catanks, we used an open source tool called #link("https://reuse.software")[REUSE].  REUSE made it easy to license all the files in the project and provides a tool to check compliance with the #link("https://reuse.software/spec/")[REUSE specification].  This section will cover how to use the #link("https://github.com/fsfe/reuse-tool")[REUSE tool].  This will be important to understand in the following sections.
+
+  REUSE is a system that makes licensing much easier by either including licensing information with the source files or specifying it in the `REUSE.toml` file.  I highly recommend reading REUSE's #link("https://reuse.software/tutorial/")[tutorial] and #link("https://reuse.software/faq/")[FAQ].
+
+  == How does REUSE work
+  The central idea of REUSE is to store all the licenses for the project in a single location: the `Licenses` directory.  There are 3 ways for files to be licensed according to the REUSE specification:
+  + Directly in the file using comment headers #footnote[Recommended method for source code files: #link("https://reuse.software/faq/#why-care")]<why-comment-headers>
+  + Next to the file using `.license` files #footnote[#link("https://reuse.software/faq/#uncommentable-file")]
+  + In the `REUSE.toml` file
+
+  == Licensing Methods Used
+  #yes_no_table(
+    table(
+      align: center + horizon,
+      columns: (1.2fr, 0.7fr, 1fr, 2fr),
+      table.header([Licensing Method], [Used?], [Files Used For], [Reason Used/Not Used]),
+      [Comment Headers],
+      [y],
+      [Most script files],
+      [Very convenient for future users of the code and portable @why-comment-headers],
+
+      [`.license` Files], [n], [*---*], [],
+      [`REUSE.toml`],
+      [y],
+      [Art, shaders, some script files, material files, animation files, models, images, fonts],
+      [],
+    ),
+    1,
+  )
+  = Licensing Tips
+
   = Reusing Code <reusing-code>
 
-  = Reusing Art <reusing-art>
+  = Licensing Art <reusing-art>
+
+  = Licensing Gotchas
+  == TextMeshPro
+  == Configuration Files
 
   = Appendix A (FINISH FORMATTING) <appendix-license-agreement>
 ]
