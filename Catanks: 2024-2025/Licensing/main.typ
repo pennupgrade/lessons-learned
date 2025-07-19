@@ -97,7 +97,11 @@
   + #folder_name("Scripts")
 
   = Best Practices
-  This section covers the best practices to follow as a Unity game is being developed to ensure that licensing is not a difficult process.  This section is mainly intended for developers.
+  This section covers the best practices to follow as a Unity game is being developed to ensure that licensing is not a difficult process.  This section is mainly intended to help developers ensure that the content that they use is easily able to be licensed at the end of development.
+
+  If you want to use content from a previous UPGRADE game, ensure that the game has been properly licensed.  So far, the only game that meets that criteria is Catanks.  Further instructions about how to use previous UPGRADE content are in the sections below.<properly-licensed-upgrade>
+
+  Even if a site advertises "royalty free" art or free to use code, oftentimes, that does not mean that one can release it under an open source license.
 
   == Code
   Do not use code that you do not have the rights to license under your chosen open source license, such as:
@@ -108,23 +112,24 @@
   See @reusing-code for cases when you would be allowed to use code that isn't your own and how to license it.
 
   == Art
-  See @reusing-art for information about how to properly license and reuse art.
+  See @reusing-art for information about how to properly license art.
+
+  To use art from a #link(<properly-licensed-upgrade>)[properly licensed UPGRADE game], place the sound effect in #raw(folder_name_reused("<type of art>").text + "<filename>/") and include a text file with a link to the file on Github.
   === Sound Effects
+  + If you are making your own sound effects from scratch place them in #folder_name_original("Audio")
+  + If you are not making your own sound effects, only use sounds from #link("https://freesound.org")[freesound.org].  Make sure that any sounds you use are licensed under (see @freesound_licensing_loc for where to look for this information):
+    + `Creative Commons 0`
+    + `Attribution 4.0` (CC BY 4.0)
+    + `Attribution 3.0` (CC BY 3.0) if needed, but preferably one of the above
+  + If you use sounds from freesound.org as explained above, place each sound in its own folder (such as #raw(folder_name_reused("Audio").text + "<name of sound>/")).  In the folder, also include a text file that contains a link to the sound on freesound.org and a note about whether the original sound was modified.
   #figure(
     [
       #image("freesound-license.png", width: 60%)
     ],
     caption: [Licensing information for a sound on #link("https://freesound.org")[freesound.org]],
-    placement: bottom,
-  )
-  + If you are making your own sound effects from scratch place them in #folder_name_original("Audio")
-  + If you are not making your own sound effects, only use sounds from #link("https://freesound.org")[freesound.org] that are labelled as licensed under:
-    + `Creative Commons 0`
-    + `Attribution 4.0` (CC BY 4.0)
-    + `Attribution 3.0` (CC BY 3.0) if needed, but preferably one of the above
-  + If you use sounds from freesound.org as explained above, place each sound in its own folder (such as #raw(folder_name_reused("Audio").text + "<name of sound>/")).  In the folder, also include a text file that contains a link to the sound on freesound.org and a note about whether the sound was original sound was modified.
+  )<freesound_licensing_loc>
   === Music
-
+  For Catanks, all the music was created by UPGRADE members and placed in the #folder_name_original("Audio") directory.
   === Other Art
 
   = Reusing Code <reusing-code>
