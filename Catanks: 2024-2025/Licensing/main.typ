@@ -59,7 +59,7 @@
 #let change_margin = -5em
 #block(inset: (right: change_margin, left: change_margin))[
 
-  *NOTE: I am not a lawyer.  This is not legal advice, just my current best understanding of copyright law and licensing.*
+  #warning[*I am not a lawyer.  This is not legal advice, just my current best understanding of copyright law and licensing.*]
 
   = Choosing a License
   There are many different open source licenses to choose from.  When licensing Catanks, here is an overview of the options we considered.
@@ -110,7 +110,7 @@
   = Best Practices
   This section covers the best practices to follow as a Unity game is being developed to ensure that licensing is not a difficult process.  This section is mainly intended to help developers ensure that the content that they use is easily able to be licensed at the end of development.
 
-  If you want to use content from a previous UPGRADE game, ensure that the game has been properly licensed.  So far, the only game that meets that criteria is Catanks.  Further instructions about how to use previous UPGRADE content are in the sections below.<properly-licensed-upgrade>
+  #notify[If you want to use content from a previous UPGRADE game, ensure that the game has been properly licensed.  So far, the only game that meets that criteria is Catanks.  Further instructions about how to use previous UPGRADE content are in the sections below.<properly-licensed-upgrade>]
 
   #warning[
     Even if a site advertises "royalty free" art or free to use code, oftentimes, that does not mean that one can release it under an open source license.]
@@ -209,6 +209,7 @@
   = Licensing Tips
   == Contributors as a Group
   = Reusing Code <reusing-code>
+  #link("https://reuse.software/faq/#copy-work")
 
   = Licensing Art <reusing-art>
 
