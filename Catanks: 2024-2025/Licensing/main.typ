@@ -1,6 +1,7 @@
 #import "@preview/unequivocal-ams:0.1.2": ams-article, proof, theorem
-#import emoji:
+#import emoji: checkmark, crossmark
 #import "@preview/numbly:0.1.0": numbly
+#import "@preview/gentle-clues:1.2.0": *
 
 #set enum(full: true, numbering: numbly(
   "{1:1}.",
@@ -8,6 +9,12 @@
   "{3:i}.",
 ))
 
+#let lincmd(string) = {
+  let pad_amt_y = 0.5em
+  let pad_amt_x = 0.5em
+  let pad_txt(it) = pad(top: pad_amt_y, bottom: pad_amt_y, left: pad_amt_x, it)
+  block(pad_txt(raw("$ " + string)), fill: luma(230), width: 100%)
+}
 #let rlink(goto) = link(goto.target)[*#goto*]
 
 #let yes_no_table(the_table, used_col_num) = [
@@ -105,7 +112,8 @@
 
   If you want to use content from a previous UPGRADE game, ensure that the game has been properly licensed.  So far, the only game that meets that criteria is Catanks.  Further instructions about how to use previous UPGRADE content are in the sections below.<properly-licensed-upgrade>
 
-  Even if a site advertises "royalty free" art or free to use code, oftentimes, that does not mean that one can release it under an open source license.
+  #warning[
+    Even if a site advertises "royalty free" art or free to use code, oftentimes, that does not mean that one can release it under an open source license.]
 
   == Code
   Do not use code that you do not have the rights to license under your chosen open source license, such as:
@@ -157,7 +165,7 @@
       [Comment Headers],
       [y],
       [Most script files],
-      [Very convenient for future users of the code and portable @why-comment-headers],
+      [Convenient for future users of the code and portable @why-comment-headers],
 
       [`.license` Files],
       [n],
@@ -167,15 +175,44 @@
       [`REUSE.toml`],
       [y],
       [Art, shaders, some script files, material files, animation files, models, images, fonts],
-      [Allowed for bulk licensing #footnote([#link("https://reuse.software/faq/#bulk-licenses")]) of files],
+      [Allowed for bulk licensing #footnote([#link("https://reuse.software/faq/#bulk-licenses")]) of files. Is a centralized location for tracking the many different licenses used in the project.],
     ),
     1,
   )
-  = Licensing Tips
 
+  == `REUSE.toml` File
+  The format for a `REUSE.toml` file entry is as so:
+  #block(
+    pad(
+      [
+        ```
+        [[annotations]]
+        path = [<list of files>]
+        precedence = "override"
+        SPDX-FileCopyrightText = [<list of copyright text>]
+        SPDX-License-Identifier = <SPDX license code>
+        ```
+      ],
+      0.5em,
+    ),
+    fill: luma(200),
+    width: 100%,
+  )
+  The precedence doesn't have to be `override`, there are other options, but to keep things simple when licensing, you should use `override`.  Check out #link("")[Catanks' `REUSE.toml`] for an example.
+
+  #info[
+    The last `[[annotation]]` in the `REUSE.toml` to cover a file is the one to define the licensing information for that file.
+  ]
+
+  For more information about `REUSE.toml`, see the #link("https://reuse.software/spec/")[REUSE specification].
+
+  = Licensing Tips
+  == Contributors as a Group
   = Reusing Code <reusing-code>
 
   = Licensing Art <reusing-art>
+
+  = Reusing Fonts
 
   = Licensing Gotchas
   == TextMeshPro
