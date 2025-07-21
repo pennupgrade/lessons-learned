@@ -156,7 +156,7 @@
   = Licensing Tools: REUSE
   In order to license Catanks, we used an open source tool called #link("https://reuse.software")[REUSE].  REUSE made it easy to license all the files in the project and provides a tool to check compliance with the #link("https://reuse.software/spec/")[REUSE specification].  This section will cover how to use the #link("https://github.com/fsfe/reuse-tool")[REUSE tool].  This will be important to understand in the following sections.
 
-  REUSE is a system that makes licensing much easier by either including licensing information with the source files or specifying it in the `REUSE.toml` file.  I highly recommend reading REUSE's #link("https://reuse.software/tutorial/")[tutorial] and #link("https://reuse.software/faq/")[FAQ].
+  REUSE is a system that makes licensing much easier by either including licensing information with the source files or specifying it in the `REUSE.toml` file.  I highly recommend reading REUSE's #link("https://reuse.software/tutorial/")[tutorial], #link("https://reuse.software/faq/")[FAQ], and #link("https://reuse.readthedocs.io/en/stable/index.html")[documentation].
 
   == How does REUSE work
   The central idea of REUSE is to store all the licenses for the project in a single location: the `Licenses` directory.  There are 3 ways for files to be licensed according to the REUSE specification:
@@ -202,19 +202,6 @@
     Currently, REUSE tool does not have a way to modify or delete headers, so be careful!
   ]
 
-  #info[
-    When licensing a file that uses someone else's code that you are allowed to use (see #rlink([@reusing-code])), make sure to include a `SPDX-FileCopyrightText` tag for the original author and a `SPDX-License-Identifier` tag for the license the original code was distributed under in addition to those tags for your contributions.#footnote[#link("https://reuse.software/faq/#copy-work")]  For example:
-    #code_example[
-      ```
-      // SPDX-FileCopyrightText: 2019 Sebastian Lague
-      // SPDX-FileCopyrightText: 2024 The Catanks Contributors
-      //
-      // SPDX-License-Identifier: LicenseRef-MIT-PathCreator
-      // SPDX-License-Identifier: MPL-2.0
-      ```
-    ]
-  ]
-
   == `REUSE.toml` File
   The format for a `REUSE.toml` file entry is:
   #code_example[
@@ -236,7 +223,30 @@
 
   = Licensing Tips
   == Contributors as a Group
+  In Catanks, since we had many contributors, instead of having a copyright notice for each person who contributed to a file, we included a single copyright notice with the author as `The Catanks Contributors` and a file in the at the root of the repository called #link("https://github.com/pennupgrade/couverture/blob/sublevel1-merge/CONTRIBUTORS.md")[`CONTRIBUTORS.md`] that listed all the contributors.  This is a valid way to do copyright notices according to REUSE.#footnote[#link("https://reuse.software/faq/#many-copyright-statements")]
+
+  == Custom Licenses
+  To use custom licenses with REUSE, one can place their own license in the `LICENSES/` directory with the name `LicenseRef-<name>.txt`.  This license can  be referenced with the SPDX license code `LicenseRef-<name>`.#footnote[#link("https://reuse.software/faq/#custom-license")]
+
+  == Configuration Files
+  Copyright protection only applies to "orginal works of authorship" #footnote[#link("https://reuse.software/faq/#what-is-copyrightable")] where free choices were made about how to create the work. #footnote[#link("https://fsfe.org/news/2025/news-20250515-01.html")]<fsfe-news-copyrightable>  Therefore, it follows that many config files present in Unity projects are not copyrightable. @fsfe-news-copyrightable#super[,~]#footnote[#link("https://reuse.software/faq/#uncopyrightable")]<license-uncopyrightable>  There are a few ways to deal with these config files.  Catanks chose to license them under the license used for source code files, as explained by the #link("https://reuse.software/faq/#uncopyrightable")[advice given by REUSE]
+
   = Reusing Code <reusing-code>
+  == What Code Are You Allowed To Use <reuse-code-legal>
+  If you want to reuse
+
+  == Using Comment Headers
+  When licensing a file that uses someone else's code that you are allowed to use (see #rlink([@reuse-code-legal])), make sure to include a `SPDX-FileCopyrightText` tag for the original author and a `SPDX-License-Identifier` tag for the license the original code was distributed under in addition to those tags for your contributions.#footnote[#link("https://reuse.software/faq/#copy-work")]  For example:
+  #code_example[
+    ```
+    // SPDX-FileCopyrightText: 2019 Sebastian Lague
+    // SPDX-FileCopyrightText: 2024 The Catanks Contributors
+    //
+    // SPDX-License-Identifier: LicenseRef-MIT-PathCreator
+    // SPDX-License-Identifier: MPL-2.0
+    ```
+  ]
+
 
   = Licensing Art <reusing-art>
 
