@@ -152,6 +152,8 @@
   For Catanks, all the music was created by UPGRADE members and placed in the #folder_name_original("Audio") directory.
   === Other Art
   For other art including 3D models and 2D images, only use UPGRADE made art.
+  === Fonts
+  Only use open source fonts.  I recomment only using #link("https://fonts.google.com/")[Google Fonts] to find fonts (they only have open source fonts and it is easy to locate the fonts' license during the licensing process).
 
   = Licensing Tools: REUSE
   In order to license Catanks, we used an open source tool called #link("https://reuse.software")[REUSE].  REUSE made it easy to license all the files in the project and provides a tool to check compliance with the #link("https://reuse.software/spec/")[REUSE specification].  This section will cover how to use the #link("https://github.com/fsfe/reuse-tool")[REUSE tool].  This will be important to understand in the following sections.
@@ -215,17 +217,21 @@
   ]
   The precedence doesn't have to be `override`, there are other options, but to keep things simple when licensing, you should use `override`.  Check out #link("")[Catanks' `REUSE.toml`] for an example.
 
+  #tip[The path string(s) can use globbing to match many files at once.#footnote[#link("https://reuse.software/spec-3.3/#reusetoml")]<reuse-toml-reuse-spec>]
   #info[
-    The last `[[annotation]]` in the `REUSE.toml` to cover a file is the one to define the licensing information for that file. #footnote[#link("https://reuse.software/spec-3.3/#reusetoml")]
+    The last `[[annotation]]` in the `REUSE.toml` to cover a file is the one to define the licensing information for that file.@reuse-toml-reuse-spec
   ]
 
   For more information about `REUSE.toml`, see the #link("https://reuse.software/spec/")[REUSE specification].
+
+  == `.gitignore`
+  The REUSE tool ignores files that are not in the git repository and and in the `.gitignore` file.#footnote[#link("https://reuse.software/faq/#exclude-file")]
 
   = Licensing Tips
   == Contributors as a Group
   In Catanks, since we had many contributors, instead of having a copyright notice for each person who contributed to a file, we included a single copyright notice with the author as `The Catanks Contributors` and a file in the at the root of the repository called #link("https://github.com/pennupgrade/couverture/blob/sublevel1-merge/CONTRIBUTORS.md")[`CONTRIBUTORS.md`] that listed all the contributors.  This is a valid way to do copyright notices according to REUSE.#footnote[#link("https://reuse.software/faq/#many-copyright-statements")]
 
-  == Custom Licenses
+  == Custom Licenses <custom-license>
   To use custom licenses with REUSE, one can place their own license in the `LICENSES/` directory with the name `LicenseRef-<name>.txt`.  This license can  be referenced with the SPDX license code `LicenseRef-<name>`.#footnote[#link("https://reuse.software/faq/#custom-license")]
 
   == Configuration Files
@@ -233,7 +239,10 @@
 
   = Reusing Code <reusing-code>
   == What Code Are You Allowed To Use <reuse-code-legal>
-  If you want to reuse
+  If you want to use someone else's code, you must ensure that the license they published their code under is compatible with the license your code will be published under.  Additionally, certain licenses may come with extra stipulations
+
+  === MIT/BSD Licenses
+  Certain licenses such as the MIT and BSD licenses require those who use the code to keep a verbatim  copy of the license text in their repository somewhere.  Oftentimes, this text includes a copyright statement with the author's name.  Catanks followed one of the options outlined by REUSE#footnote[#link("https://reuse.software/faq/#license-templates")] and included the license text as a #link(<custom-license>)[custom license] and referenced it when necessary.
 
   == Using Comment Headers
   When licensing a file that uses someone else's code that you are allowed to use (see #rlink([@reuse-code-legal])), make sure to include a `SPDX-FileCopyrightText` tag for the original author and a `SPDX-License-Identifier` tag for the license the original code was distributed under in addition to those tags for your contributions.#footnote[#link("https://reuse.software/faq/#copy-work")]  For example:
@@ -249,12 +258,49 @@
 
 
   = Licensing Art <reusing-art>
+  == UPGRADE-Contributed Art
+  Licensing original art created by UPGRADE for Catanks was very easy due to the license agreement.  We simply used the `REUSE.toml` file to license all the art under the `CC BY-SA 4.0` license.  Here is an example annotation we used to do this:
+  #code_example[
+    ```
+    [[annotations]]
+    path = [
+      "Tanks/Assets/Models/**",
+      "Tanks/Assets/Images/**",
+      "AchievementsWithBorders/**",
+      "Tanks/Assets/Audio/CustomSoundEffects/**",
+      "Tanks/Assets/Audio/OfficialTracks/**"
+      ]
+    precedence = "override"
+    SPDX-FileCopyrightText = "2024 The Catanks Contributors"
+    SPDX-License-Identifier = "CC-BY-SA-4.0"
+    ```
+  ]
+
+  == Reused Art: CC0
+  To reuse art that is licensed under `CC0`, no attribution is needed.  However, I did include links to all art used in the `README`.  In order to make licensing easier, in the `REUSE.toml`, I marked the copyright holders as `NOASSERTION`:
+  #code_example[
+    ```
+    [[annotations]]
+    path = ["Tanks/Assets/Audio/OpenSourceSounds/CC0/**"]
+    precedence = "override"
+    SPDX-FileCopyrightText = "NOASSERTION"
+    SPDX-License-Identifier = "CC0-1.0"
+    ```
+  ]
+
+  == Reused Art: CC BY 3.0 and 4.0
+  == No Modifications Made
+
+
+  == Modifications Made
 
   = Reusing Fonts
+  == Open Font License (OFL)
+  === Reserved Name
+  === `.asset` File Derived From the Font
 
   = Licensing Gotchas
   == TextMeshPro
-  == Configuration Files
 
   = Appendix A (FINISH FORMATTING) <appendix-license-agreement>
 ]
