@@ -2,6 +2,14 @@
 #import emoji: checkmark, crossmark
 #import "@preview/numbly:0.1.0": numbly
 #import "@preview/gentle-clues:1.2.0": *
+#let code_example(content) = block(
+  pad(
+    content,
+    0.5em,
+  ),
+  fill: luma(220),
+  width: 100%,
+)
 
 #set enum(full: true, numbering: numbly(
   "{1:1}.",
@@ -180,28 +188,48 @@
     1,
   )
 
+  == Comment Headers
+  The general format for comment headers in `.cs` files is:
+  #code_example[
+    ```
+    // SPDX-FileCopyrightText: <year> <copyright holder>
+    //
+    // SPDX-License-Identifier: <SPDX license>
+    ```
+  ]
+  However, one generally shouldn't add these comment headers manually.  The REUSE tool has an #link("https://reuse.readthedocs.io/en/stable/man/reuse-annotate.html")[easy way] to add comment headers to files.
+  #notify[
+    Currently, REUSE tool does not have a way to modify or delete headers, so be careful!
+  ]
+
+  #info[
+    When licensing a file that uses someone else's code that you are allowed to use (see #rlink([@reusing-code])), make sure to include a `SPDX-FileCopyrightText` tag for the original author and a `SPDX-License-Identifier` tag for the license the original code was distributed under in addition to those tags for your contributions.#footnote[#link("https://reuse.software/faq/#copy-work")]  For example:
+    #code_example[
+      ```
+      // SPDX-FileCopyrightText: 2019 Sebastian Lague
+      // SPDX-FileCopyrightText: 2024 The Catanks Contributors
+      //
+      // SPDX-License-Identifier: LicenseRef-MIT-PathCreator
+      // SPDX-License-Identifier: MPL-2.0
+      ```
+    ]
+  ]
+
   == `REUSE.toml` File
-  The format for a `REUSE.toml` file entry is as so:
-  #block(
-    pad(
-      [
-        ```
-        [[annotations]]
-        path = [<list of files>]
-        precedence = "override"
-        SPDX-FileCopyrightText = [<list of copyright text>]
-        SPDX-License-Identifier = <SPDX license code>
-        ```
-      ],
-      0.5em,
-    ),
-    fill: luma(200),
-    width: 100%,
-  )
+  The format for a `REUSE.toml` file entry is:
+  #code_example[
+    ```
+    [[annotations]]
+    path = [<list of files>]
+    precedence = "override"
+    SPDX-FileCopyrightText = [<list of copyright text>]
+    SPDX-License-Identifier = <SPDX license code>
+    ```
+  ]
   The precedence doesn't have to be `override`, there are other options, but to keep things simple when licensing, you should use `override`.  Check out #link("")[Catanks' `REUSE.toml`] for an example.
 
   #info[
-    The last `[[annotation]]` in the `REUSE.toml` to cover a file is the one to define the licensing information for that file.
+    The last `[[annotation]]` in the `REUSE.toml` to cover a file is the one to define the licensing information for that file. #footnote[#link("https://reuse.software/spec-3.3/#reusetoml")]
   ]
 
   For more information about `REUSE.toml`, see the #link("https://reuse.software/spec/")[REUSE specification].
@@ -209,7 +237,6 @@
   = Licensing Tips
   == Contributors as a Group
   = Reusing Code <reusing-code>
-  #link("https://reuse.software/faq/#copy-work")
 
   = Licensing Art <reusing-art>
 
