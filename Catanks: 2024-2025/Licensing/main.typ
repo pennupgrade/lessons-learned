@@ -303,7 +303,22 @@
   ]
 
   == Modifications Made
-
+  === Original Licensed Under `CC BY 4.0`
+  If modifications are made to art originally licensed under `CC BY 4.0`, one can license the new work under `CC BY-SA 4.0`.  However, attribution to the original must be included in the `REUSE.toml`.  Here is an example of one such `REUSE.toml` annotation:
+  #code_example[
+    ```
+    [[annotations]]
+    path="Tanks/Assets/Audio/OpenSourceSounds/Other/mechanical-gadget.mp3"
+    precedence = "override"
+    SPDX-FileCopyrightText = ["2024 The Catanks Contributors", "kiddpark"]
+    SPDX-License-Identifier = "CC-BY-SA-4.0"
+    SPDX-FileNotice = "Audio modified by The Catank Contributors.\nOriginal audio made by kiddpark, licensed under CC-BY-4.0: https://freesound.org/s/201159/"
+    ```
+  ]
+  === Original Licensed Under `CC BY 3.0`
+  There are two options:
+  + Simply
+  +
   = Reusing Fonts
   == Open Font License (OFL)
   === Reserved Name
