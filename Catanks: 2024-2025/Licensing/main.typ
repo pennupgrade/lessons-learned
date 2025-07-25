@@ -244,7 +244,13 @@
   === MIT/BSD Licenses
   Certain licenses such as the MIT and BSD licenses require those who use the code to keep a verbatim  copy of the license text in their repository somewhere.  Oftentimes, this text includes a copyright statement with the author's name.  Catanks followed one of the options outlined by REUSE#footnote[#link("https://reuse.software/faq/#license-templates")] and included the license text as a #link(<custom-license>)[custom license] and referenced it when necessary.
 
-  == Using Comment Headers
+  == Licensing Code
+
+  #notify[
+    Make sure to identify *all* copyright holders in the copright text(s) when licensing (see sections below for examples).
+  ]
+
+  === Using Comment Headers
   When licensing a file that uses someone else's code that you are allowed to use (see #rlink([@reuse-code-legal])), make sure to include a `SPDX-FileCopyrightText` tag for the original author and a `SPDX-License-Identifier` tag for the license the original code was distributed under in addition to those tags for your contributions.#footnote[#link("https://reuse.software/faq/#copy-work")]  For example:
   #code_example[
     ```
@@ -255,6 +261,8 @@
     // SPDX-License-Identifier: MPL-2.0
     ```
   ]
+  === Using `REUSE.toml`
+  #warning[TODO: FINISH]
 
 
   = Licensing Art <reusing-art>
@@ -290,7 +298,7 @@
 
   == Reused Art: CC BY 3.0 and 4.0
   == No Modifications Made
-  If no modifications are made, include the file in the `REUSE.toml` under the license it was released under.  Additionally, there must be a note included that gives attribution.  I used the #link("https://spdx.github.io/spdx-spec/v2.3/file-information/")[SPDX-FileNotice] tag for this.  Here is an example `REUSE.toml` annotation:
+  If no modifications are made, you *must* include the file in the `REUSE.toml` under the license it was released under.  Additionally, there must be a note included that gives attribution.  I used the #link("https://spdx.github.io/spdx-spec/v2.3/file-information/")[SPDX-FileNotice] tag for this.  Here is an example `REUSE.toml` annotation:
   #code_example[
     ```
     [[annotations]]
@@ -304,7 +312,7 @@
 
   == Modifications Made
   === Original Licensed Under `CC BY 4.0`
-  If modifications are made to art originally licensed under `CC BY 4.0`, one can license the new work under `CC BY-SA 4.0`.  However, attribution to the original must be included in the `REUSE.toml`.  Here is an example of one such `REUSE.toml` annotation:
+  If modifications are made to art originally licensed under `CC BY 4.0`, one can license the new work under `CC BY-SA 4.0`.#footnote[#link("https://opensource.stackexchange.com/a/12364")]<cc-by-to-cc-by-sa>  However, attribution to the original must be included in the `REUSE.toml`.  Here is an example of one such `REUSE.toml` annotation:
   #code_example[
     ```
     [[annotations]]
@@ -316,9 +324,9 @@
     ```
   ]
   === Original Licensed Under `CC BY 3.0`
-  There are two options:
-  + Simply
-  +
+  For art originally licensed under `CC BY 3.0`, there are two options:
+  + License final work under `CC BY 3.0`
+  + License modifications under `CC BY-SA 4.0`.  Meaning that the final work will be licensed under `CC BY-SA 4.0` and `CC BY 3.0` *IS THIS TRUE?!?!?!*
   = Reusing Fonts
   == Open Font License (OFL)
   === Reserved Name
