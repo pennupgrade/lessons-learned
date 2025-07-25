@@ -251,77 +251,87 @@
   ]
 
   === Using Comment Headers
-  When licensing a file that uses someone else's code that you are allowed to use (see #rlink([@reuse-code-legal])), make sure to include a `SPDX-FileCopyrightText` tag for the original author and a `SPDX-License-Identifier` tag for the license the original code was distributed under in addition to those tags for your contributions.#footnote[#link("https://reuse.software/faq/#copy-work")]  For example:
-  #code_example[
-    ```
-    // SPDX-FileCopyrightText: 2019 Sebastian Lague
-    // SPDX-FileCopyrightText: 2024 The Catanks Contributors
-    //
-    // SPDX-License-Identifier: LicenseRef-MIT-PathCreator
-    // SPDX-License-Identifier: MPL-2.0
-    ```
+  When licensing a file that uses someone else's code that you are allowed to use (see #rlink([@reuse-code-legal])), make sure to include a `SPDX-FileCopyrightText` tag for the original author and a `SPDX-License-Identifier` tag for the license the original code was distributed under in addition to those tags for your contributions.#footnote[#link("https://reuse.software/faq/#copy-work")]
+  #example[
+    #code_example[
+      ```
+      // SPDX-FileCopyrightText: 2019 Sebastian Lague
+      // SPDX-FileCopyrightText: 2024 The Catanks Contributors
+      //
+      // SPDX-License-Identifier: LicenseRef-MIT-PathCreator
+      // SPDX-License-Identifier: MPL-2.0
+      ```
+    ]
   ]
   === Using `REUSE.toml`
-  #warning[TODO: FINISH]
+  We used the `REUSE.toml` to license large amounts of code used from others (mostly libraries such as `LeanTween` and `BetterMinimal`)
 
 
   = Licensing Art <reusing-art>
   == UPGRADE-Contributed Art
-  Licensing original art created by UPGRADE for Catanks was very easy due to the license agreement.  We simply used the `REUSE.toml` file to license all the art under the `CC BY-SA 4.0` license.  Here is an example annotation we used to do this:
-  #code_example[
-    ```
-    [[annotations]]
-    path = [
-      "Tanks/Assets/Models/**",
-      "Tanks/Assets/Images/**",
-      "AchievementsWithBorders/**",
-      "Tanks/Assets/Audio/CustomSoundEffects/**",
-      "Tanks/Assets/Audio/OfficialTracks/**"
-      ]
-    precedence = "override"
-    SPDX-FileCopyrightText = "2024 The Catanks Contributors"
-    SPDX-License-Identifier = "CC-BY-SA-4.0"
-    ```
+  Licensing original art created by UPGRADE for Catanks was very easy due to the license agreement.  We simply used the `REUSE.toml` file to license all the art under the `CC BY-SA 4.0` license.
+  #example[
+    #code_example[
+      ```
+      [[annotations]]
+      path = [
+        "Tanks/Assets/Models/**",
+        "Tanks/Assets/Images/**",
+        "AchievementsWithBorders/**",
+        "Tanks/Assets/Audio/CustomSoundEffects/**",
+        "Tanks/Assets/Audio/OfficialTracks/**"
+        ]
+      precedence = "override"
+      SPDX-FileCopyrightText = "2024 The Catanks Contributors"
+      SPDX-License-Identifier = "CC-BY-SA-4.0"
+      ```
+    ]
   ]
 
   == Reused Art: CC0
-  To reuse art that is licensed under `CC0`, no attribution is needed.  However, I did include links to all art used in the `README`.  In order to make licensing easier, in the `REUSE.toml`, I marked the copyright holders as `NOASSERTION`:
-  #code_example[
-    ```
-    [[annotations]]
-    path = ["Tanks/Assets/Audio/OpenSourceSounds/CC0/**"]
-    precedence = "override"
-    SPDX-FileCopyrightText = "NOASSERTION"
-    SPDX-License-Identifier = "CC0-1.0"
-    ```
+  To reuse art that is licensed under `CC0`, no attribution is needed.  However, I did include links to all art used in the `README`.  In order to make licensing easier, in the `REUSE.toml`, I marked the copyright holders as `NOASSERTION`.
+  #example[
+    #code_example[
+      ```
+      [[annotations]]
+      path = ["Tanks/Assets/Audio/OpenSourceSounds/CC0/**"]
+      precedence = "override"
+      SPDX-FileCopyrightText = "NOASSERTION"
+      SPDX-License-Identifier = "CC0-1.0"
+      ```
+    ]
   ]
 
   == Reused Art: CC BY 3.0 and 4.0
   == No Modifications Made
-  If no modifications are made, you *must* include the file in the `REUSE.toml` under the license it was released under.  Additionally, there must be a note included that gives attribution.  I used the #link("https://spdx.github.io/spdx-spec/v2.3/file-information/")[SPDX-FileNotice] tag for this.  Here is an example `REUSE.toml` annotation:
-  #code_example[
-    ```
-    [[annotations]]
-    path="Tanks/Assets/Audio/OpenSourceSounds/Other/bounce.wav"
-    precedence = "override"
-    SPDX-FileCopyrightText = ["NoiseCollector"]
-    SPDX-License-Identifier = "CC-BY-3.0"
-    SPDX-FileNotice = "Audio by NoiseCollector -- https://freesound.org/s/111361/ -- License: Attribution 3.0"
-    ```
+  If no modifications are made, you *must* include the file in the `REUSE.toml` under the license it was released under.  Additionally, there must be a note included that gives attribution.  I used the #link("https://spdx.github.io/spdx-spec/v2.3/file-information/")[SPDX-FileNotice] tag for this.
+  #example[
+    #code_example[
+      ```
+      [[annotations]]
+      path="Tanks/Assets/Audio/OpenSourceSounds/Other/bounce.wav"
+      precedence = "override"
+      SPDX-FileCopyrightText = ["NoiseCollector"]
+      SPDX-License-Identifier = "CC-BY-3.0"
+      SPDX-FileNotice = "Audio by NoiseCollector -- https://freesound.org/s/111361/ -- License: Attribution 3.0"
+      ```
+    ]
   ]
 
   == Modifications Made
   === Original Licensed Under `CC BY 4.0`
-  If modifications are made to art originally licensed under `CC BY 4.0`, one can license the new work under `CC BY-SA 4.0`.#footnote[#link("https://opensource.stackexchange.com/a/12364")]<cc-by-to-cc-by-sa>  However, attribution to the original must be included in the `REUSE.toml`.  Here is an example of one such `REUSE.toml` annotation:
-  #code_example[
-    ```
-    [[annotations]]
-    path="Tanks/Assets/Audio/OpenSourceSounds/Other/mechanical-gadget.mp3"
-    precedence = "override"
-    SPDX-FileCopyrightText = ["2024 The Catanks Contributors", "kiddpark"]
-    SPDX-License-Identifier = "CC-BY-SA-4.0"
-    SPDX-FileNotice = "Audio modified by The Catank Contributors.\nOriginal audio made by kiddpark, licensed under CC-BY-4.0: https://freesound.org/s/201159/"
-    ```
+  If modifications are made to art originally licensed under `CC BY 4.0`, one can license the new work under `CC BY-SA 4.0`.#footnote[#link("https://opensource.stackexchange.com/a/12364")]<cc-by-to-cc-by-sa>  However, attribution to the original must be included in the `REUSE.toml`.
+  #example[
+    #code_example[
+      ```
+      [[annotations]]
+      path="Tanks/Assets/Audio/OpenSourceSounds/Other/mechanical-gadget.mp3"
+      precedence = "override"
+      SPDX-FileCopyrightText = ["2024 The Catanks Contributors", "kiddpark"]
+      SPDX-License-Identifier = "CC-BY-SA-4.0"
+      SPDX-FileNotice = "Audio modified by The Catank Contributors.\nOriginal audio made by kiddpark, licensed under CC-BY-4.0: https://freesound.org/s/201159/"
+      ```
+    ]
   ]
   === Original Licensed Under `CC BY 3.0`
   For art originally licensed under `CC BY 3.0`, there are two options:
