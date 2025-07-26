@@ -69,7 +69,8 @@
 )
 
 #let change_margin = -5em
-#block(inset: (right: change_margin, left: change_margin))[
+#let main_block(content) = block(width: 100%, inset: (right: change_margin, left: change_margin), content)
+#main_block[
 
   #warning[*I am not a lawyer.  This is not legal advice, just my current best understanding of copyright law and licensing.*]
 
@@ -476,10 +477,19 @@
 
   == `UIElementsSchema` Directory
   If you didn't add any files to the `UIElementsSchema` Directory, one can safely gitignore it.#footnote[#link("https://discussions.unity.com/t/uielementsschema/805120")]
+]
+#pagebreak()
+#set heading(numbering: numbly(
+  "Appendix {1:A}:",
+))
+#counter(heading).update(0)
+#main_block[
+  = License Agreement Template <appendix-license-agreement>
 
-  = Appendix A (FINISH FORMATTING) <appendix-license-agreement>
-
-  = Appendix B (FINISH FORMATTING) <appendix-gitignore>
+]
+#pagebreak()
+#main_block[
+  = Example `.gitignore` <appendix-gitignore>
   #code_example[
     ```
     # DS_Store
