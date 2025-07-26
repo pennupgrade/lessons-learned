@@ -419,9 +419,58 @@
   ]
 
   = Licensing Gotchas
-  == TextMeshPro
+  == TextMesh Pro
+
+  === Unity Companion License
+  TextMesh Pro is licensed under the Unity Companion license.  For the most part, the files that one would include in a git repository do not fall under TextMesh Pro's license. However some files do.  Particularly the following files:
+  - All non-custom TextMesh Pro shaders
+  - `LineBreaking Leading Characters.txt` and `LineBreaking Following Characters.txt`
+  - `Default Style Sheet.asset`
+
+  #example[
+    #code_example[
+      ```
+      [[annotations]]
+      path=[
+        "Tanks/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt",
+        "Tanks/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt",
+        "Tanks/Assets/TextMesh Pro/Shaders/*",
+        "Tanks/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset"
+      ]
+      precedence = "override"
+      SPDX-FileCopyrightText = "2022 Unity Technologies ApS"
+      SPDX-License-Identifier = "LicenseRef-Unity-Companion"
+      ```
+    ]
+  ]
+
+  === Files to Exclude
+  I recommend excluding the TextMesh Pro documentation from your git repository (as it is uneeded).  Additionally, I recommend excluding the EmojiOne files from the TextMesh Pro files as they have a weird license.  See #rlink[@appendix-gitignore] for example additions to your `.gitignore` file.
+
   == Licensing Info in Built Game
-  https://creativecommons.org/faq/#how-do-i-properly-attribute-material-offered-under-a-creative-commons-license
+  Many open source licenses (such as MIT and BSD licenses for example) require the copyright text also be included with the compiled program.  To that end, ensure that a file (in Catanks we called this file `THIRD-PARTY-LICENSES.md`) is included with the compiled program and contains the text for the licenses used.  For an example, see Catanks' #link("https://github.com/pennupgrade/couverture/blob/sublevel1-merge/THIRD-PARTY-LICENSES.md")[`THIRD-PARTY-LICENSES.md`].
+  #tip[
+    You do not need to include the Creative Commons attributions in this file.  Instead, you can link to a page that contains the attributions #footnote[#link("https://creativecommons.org/faq/#how-do-i-properly-attribute-material-offered-under-a-creative-commons-license")] (such as the REUSE.toml on your git repository).
+  ]
+
+  == `UIElementsSchema` Directory
+  If you didn't add any files to the `UIElementsSchema` Directory, one can safely gitignore it.#footnote[#link("https://discussions.unity.com/t/uielementsschema/805120")]
 
   = Appendix A (FINISH FORMATTING) <appendix-license-agreement>
+
+  = Appendix B (FINISH FORMATTING) <appendix-gitignore>
+  #code_example[
+    ```
+    # DS_Store
+    **/.DS_Store
+
+    # TextMesh Pro documentation
+    Assets/TextMesh Pro/Documentation/
+
+    # EmojiOne
+    Assets/TextMesh Pro/**/EmojiOne*
+
+    UIElementsSchema
+    ```
+  ]
 ]
