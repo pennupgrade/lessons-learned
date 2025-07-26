@@ -242,7 +242,24 @@
   Copyright protection only applies to "orginal works of authorship" #footnote[#link("https://reuse.software/faq/#what-is-copyrightable")] where free choices were made about how to create the work. #footnote[#link("https://fsfe.org/news/2025/news-20250515-01.html")]<fsfe-news-copyrightable>  Therefore, it follows that many config files present in Unity projects are not copyrightable. @fsfe-news-copyrightable#super[,~]#footnote[#link("https://reuse.software/faq/#uncopyrightable")]<license-uncopyrightable>  There are a few ways to deal with these config files.  Catanks chose to license them under the license used for source code files, as explained by the #link("https://reuse.software/faq/#uncopyrightable")[advice given by REUSE]
 
   == Comments
-  *TODO: FINISH THIS SECTION*
+  If you want to include more information regarding how a license forr a certain file was determined, you can include this information in the `SPDX-LicenceComments` tag.
+
+  #example[
+    #code_example[
+      ```
+      [[annotations]]
+      path = [
+        "Tanks/Assets/TextMesh Pro/Fonts/OrelegaOne-Regular.ttf",
+        "Tanks/Assets/TextMesh Pro/Resources/Fonts & Materials/OrelegaOne-Regular SDF.asset",
+        "Tanks/Assets/TextMesh Pro/Resources/Fonts & Materials/TitleText.asset"
+        ]
+      precedence = "override"
+      SPDX-FileCopyrightText = "The Orelega One Project Authors"
+      SPDX-License-Identifier = "OFL-1.1-no-RFN"
+      SPDX-LicenceComments = "License found at https://fonts.google.com/specimen/Orelega+One/license.  The link to the Orelega One Github page seems to be broken."
+      ```
+    ]
+  ]
 
   = Reusing Code <reusing-code>
   == What Code Are You Allowed To Use <reuse-code-legal>
@@ -313,6 +330,7 @@
   ]
 
   == Reused Art: CC0
+  === No Modifications Made
   To reuse art that is licensed under `CC0`, no attribution is needed.  However, I did include links to all art used in the `README`.  In order to make licensing easier, in the `REUSE.toml`, I marked the copyright holders as `NOASSERTION`.
   #example[
     #code_example[
@@ -325,6 +343,9 @@
       ```
     ]
   ]
+
+  === Modifications Made
+  If enough modifications are made to consider it a new work (the bar is fairly low, but it is more than simply cutting audio for example), the new work can be licensed under `CC BY-SA 4.0`.  It is courteous to include attribution or a link to the original work somewhere in the project (perhaps in the `README` as mentioned in the previous section).
 
   #warning[
     TODO: ADD WHETHER ADAPTATIONS TO CC0 STUFF CAN BE LICENSED UNDER CC BY SA
@@ -436,7 +457,7 @@
         "Tanks/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt",
         "Tanks/Assets/TextMesh Pro/Shaders/*",
         "Tanks/Assets/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset"
-      ]
+        ]
       precedence = "override"
       SPDX-FileCopyrightText = "2022 Unity Technologies ApS"
       SPDX-License-Identifier = "LicenseRef-Unity-Companion"
