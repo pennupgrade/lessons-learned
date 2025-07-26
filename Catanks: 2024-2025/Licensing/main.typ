@@ -237,6 +237,9 @@
   == Configuration Files
   Copyright protection only applies to "orginal works of authorship" #footnote[#link("https://reuse.software/faq/#what-is-copyrightable")] where free choices were made about how to create the work. #footnote[#link("https://fsfe.org/news/2025/news-20250515-01.html")]<fsfe-news-copyrightable>  Therefore, it follows that many config files present in Unity projects are not copyrightable. @fsfe-news-copyrightable#super[,~]#footnote[#link("https://reuse.software/faq/#uncopyrightable")]<license-uncopyrightable>  There are a few ways to deal with these config files.  Catanks chose to license them under the license used for source code files, as explained by the #link("https://reuse.software/faq/#uncopyrightable")[advice given by REUSE]
 
+  == Comments
+  *TODO: FINISH THIS SECTION*
+
   = Reusing Code <reusing-code>
   == What Code Are You Allowed To Use <reuse-code-legal>
   If you want to use someone else's code, you must ensure that the license they published their code under is compatible with the license your code will be published under.  Additionally, certain licenses may come with extra stipulations
@@ -360,11 +363,39 @@
   + License final work under `CC BY-SA 3.0` @cc-by-to-cc-by-sa
   = Reusing Fonts
   == Open Font License (OFL)
-  === Reserved Name
+  The #link("https://opensource.org/license/ofl-1-1")[OFL] is one of the most popular open source font licenses.  However, there are some caveats that one should keep in mind when using OFL licensed fonts.
+  === Reserved Names
+  Some OFL licensed fonts might have a "reserved name" which is a font name that those who modify the original font cannot use for their version.  It is usually specified at the top of the OFL license text.  In order to properly license OFL fonts with a reserved name using REUSE do the following:
+  + Utilize the license with SPDX identifier `OFL-1.1-RFN`
+  + Identify any reserved names in the `SPDX-FileNotice` tag in the `REUSE.toml`
+
+  #example[
+    #code_example[
+      ```
+      [[annotations]]
+      path = [
+        "Tanks/Assets/TextMesh Pro/Fonts/LiberationSans.ttf",
+        "Tanks/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+        "Tanks/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+        "Tanks/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat",
+        "Tanks/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat"
+        ]
+      precedence = "override"
+      SPDX-FileCopyrightText = ["2010 Google Corporation", "2012 Red Hat, Inc."]
+      SPDX-License-Identifier = "OFL-1.1-RFN"
+      SPDX-FileNotice = ["Reserved Font \"Arimo\", \"Tinos\", and \"Cousine\"", "Reserved Font Name \"Liberation\""]
+      ```
+    ]
+  ]
+  === No Reserved Names
+  If the font has no reserved names, use the license with the SPDX identifier `OFL-1.1-no-RFN`
   === `.asset` File Derived From the Font
+
 
   = Licensing Gotchas
   == TextMeshPro
+  == Licensing Info in Built Game
+  https://creativecommons.org/faq/#how-do-i-properly-attribute-material-offered-under-a-creative-commons-license
 
   = Appendix A (FINISH FORMATTING) <appendix-license-agreement>
 ]
