@@ -134,17 +134,17 @@
   == Art
   See #rlink[@reusing-art] for information about how to properly license art.
 
-  To use art (or shaders) from a #link(<properly-licensed-upgrade>)[properly licensed UPGRADE game], place the art in the directory #folder_name_reused("<type of art>", suffix: "<filename>")) and include a text file with a link to the file on Github in that directory.
+  To use art (or shaders) from a #link(<properly-licensed-upgrade>)[properly licensed UPGRADE game], place the art in the directory #folder_name_reused("<type of art>", suffix: "<filename>")) and include a text file with a link to the file on Github in that directory and a note explaining whether the file was modified (and if so, how).
   === Sound Effects
   + If you are making your own sound effects from scratch place them in #folder_name_original("Audio")
   + If you are not making your own sound effects, only use sounds from #link("https://freesound.org")[freesound.org].  Make sure that any sounds you use are licensed under (see #rlink[@freesound_licensing_loc] for where to look for this information):
     + `Creative Commons 0`
     + `Attribution 4.0` (CC BY 4.0)
     + `Attribution 3.0` (CC BY 3.0) if needed, but preferably one of the above
-  + If you use sounds from freesound.org as explained above, place each sound in its own folder (such as #folder_name_reused("Audio", suffix: "<name of sound>/").  In the folder, also include a text file that contains a link to the sound on freesound.org and a note about whether the original sound was modified.
+  + If you use sounds from freesound.org as explained above, place each sound in its own folder (such as #folder_name_reused("Audio", suffix: "<name of sound>/").  In the folder, also include a text file that contains a link to the sound on freesound.org and a note about whether the original sound was modified (and if so, how).
   #figure(
     [
-      #image("freesound-license.png", width: 60%)
+      #image("images/freesound-license.png", width: 60%)
     ],
     caption: [Licensing information for a sound on #link("https://freesound.org")[freesound.org]],
   )<freesound_licensing_loc>
@@ -264,10 +264,27 @@
     ]
   ]
   === Using `REUSE.toml`
-  We used the `REUSE.toml` to license large amounts of code used from others (mostly libraries such as `LeanTween` and `BetterMinimal`)
+  We used the `REUSE.toml` to license large amounts of code used from others (mostly libraries such as `LeanTween` and `BetterMinimal`).
+  #example[
+    #code_example[
+      ```
+      [[annotations]]
+      path = ["Tanks/Assets/LeanTween/**"]
+      precedence = "override"
+      SPDX-FileCopyrightText = ["2017 Russell Savage", "2001 Robert Penner"]
+      SPDX-License-Identifier = "LicenseRef-MIT-LeanTween"
+      ```
+    ]
+  ]
 
 
   = Licensing Art <reusing-art>
+  #tip[
+    I highly recommend reading Creative Commons' #link("https://creativecommons.org/faq/")[FAQ] page for more information
+  ]
+  #tip[
+    For learning about license compatibility between Creative Commons licenses, see #link("https://creativecommons.org/faq/#if-i-derive-or-adapt-material-offered-under-a-creative-commons-license-which-cc-licenses-can-i-use")[this question] in Creative Common's FAQ.
+  ]
   == UPGRADE-Contributed Art
   Licensing original art created by UPGRADE for Catanks was very easy due to the license agreement.  We simply used the `REUSE.toml` file to license all the art under the `CC BY-SA 4.0` license.
   #example[
@@ -302,8 +319,12 @@
     ]
   ]
 
+  #warning[
+    TODO: ADD WHETHER ADAPTATIONS TO CC0 STUFF CAN BE LICENSED UNDER CC BY SA
+  ]
+
   == Reused Art: CC BY 3.0 and 4.0
-  == No Modifications Made
+  === No Modifications Made
   If no modifications are made, you *must* include the file in the `REUSE.toml` under the license it was released under.  Additionally, there must be a note included that gives attribution.  I used the #link("https://spdx.github.io/spdx-spec/v2.3/file-information/")[SPDX-FileNotice] tag for this.
   #example[
     #code_example[
@@ -318,9 +339,9 @@
     ]
   ]
 
-  == Modifications Made
-  === Original Licensed Under `CC BY 4.0`
-  If modifications are made to art originally licensed under `CC BY 4.0`, one can license the new work under `CC BY-SA 4.0`.#footnote[#link("https://opensource.stackexchange.com/a/12364")]<cc-by-to-cc-by-sa>  However, attribution to the original must be included in the `REUSE.toml`.
+  === Modifications Made
+  ==== Original Licensed Under `CC BY 4.0`
+  If modifications are made to art originally licensed under `CC BY 4.0`, one can license the new work under `CC BY-SA 4.0`.#footnote[#link("https://opensource.stackexchange.com/a/12364")]<cc-by-to-cc-by-sa>#super[,~]#footnote[#link("https://creativecommons.org/faq/#if-i-derive-or-adapt-material-offered-under-a-creative-commons-license-which-cc-licenses-can-i-use")] However, attribution to the original author must be included in the `REUSE.toml`.
   #example[
     #code_example[
       ```
@@ -333,10 +354,10 @@
       ```
     ]
   ]
-  === Original Licensed Under `CC BY 3.0`
-  For art originally licensed under `CC BY 3.0`, there are two options:
+  ==== Original Licensed Under `CC BY 3.0`
+  For art originally licensed under `CC BY 3.0`, there are a couple options:
   + License final work under `CC BY 3.0`
-  + License modifications under `CC BY-SA 4.0`.  Meaning that the final work will be licensed under `CC BY-SA 4.0` and `CC BY 3.0` *IS THIS TRUE?!?!?!*
+  + License final work under `CC BY-SA 3.0` @cc-by-to-cc-by-sa
   = Reusing Fonts
   == Open Font License (OFL)
   === Reserved Name
