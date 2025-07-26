@@ -17,6 +17,10 @@
   "{3:i}.",
 ))
 
+#set quote(block: true)
+#show quote: set align(center)
+#show quote: set pad(2em)
+
 #let lincmd(string) = {
   let pad_amt_y = 0.5em
   let pad_amt_x = 0.5em
@@ -390,7 +394,29 @@
   === No Reserved Names
   If the font has no reserved names, use the license with the SPDX identifier `OFL-1.1-no-RFN`
   === `.asset` File Derived From the Font
+  According to the OFL:
+  #quote(attribution: [Open Font License, #link("https://openfontlicense.org/open-font-license-official-text/")])[The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.]
 
+  To me, this would imply that the `.asset` and `.mat` files that TextMeshPro produces from the font in question must also be licensed under the OFL.
+
+  #example[
+    #code_example[
+      ```
+      [[annotations]]
+      path = [
+          "Tanks/Assets/TextMesh Pro/Fonts/LiberationSans.ttf",
+          "Tanks/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset",
+          "Tanks/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset",
+          "Tanks/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat",
+          "Tanks/Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat"
+          ]
+      precedence = "override"
+      SPDX-FileCopyrightText = ["2010 Google Corporation", "2012 Red Hat, Inc."]
+      SPDX-License-Identifier = "OFL-1.1-RFN"
+      SPDX-FileNotice = ["Reserved Font \"Arimo\", \"Tinos\", and \"Cousine\"", "Reserved Font Name \"Liberation\""]
+      ```
+    ]
+  ]
 
   = Licensing Gotchas
   == TextMeshPro
