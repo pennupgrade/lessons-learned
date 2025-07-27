@@ -484,10 +484,106 @@
 ))
 #counter(heading).update(0)
 #main_block[
-  = License Agreement Template <appendix-license-agreement>
+  // form typsetting
+  #let answer-color = rgb("#70757a")
+  #let short-answer = [
+    #set text(fill: answer-color)
+    Short answer text
 
+  ]
+  #let short-answer-full = [
+    #set par(first-line-indent: 0em)
+    #short-answer
+    #line(length: 50%, stroke: (thickness: 0.5pt, paint: answer-color, dash: ("dot", 2pt)))
+  ]
+
+  #let question-top-bottom-inset = 1.5em
+  #let question-left-right-inset = 1em
+  #let form-question(question, response) = [#block(stroke: luma(230), width: 100%, radius: 6pt, fill: white, inset: (
+      left: question-left-right-inset,
+      right: question-left-right-inset,
+      top: question-top-bottom-inset,
+      bottom: question-top-bottom-inset,
+    ))[
+      #question
+      #v(1em)
+      #response
+    ]
+  ]
+
+  #let typset-simple-form(header, ..questions) = [
+    #set par(first-line-indent: 0em)
+    #align(center)[
+      #block(stroke: black, width: 110%, inset: 1em, fill: rgb("#f0ebf8"))[
+        #v(5pt)
+        #text(size: 15pt, header)
+        #align(left)[
+          #let question-array = questions.pos()
+          #let arr-length = question-array.len()
+          #for q in question-array [
+            #v(5pt)
+            #form-question(q.first(), q.last())
+          ]
+        ]
+      ]
+    ]
+  ]
+
+  #let multiple-choice-answer(content) = [
+    #box(inset: (bottom: -1.5pt))[
+      #circle(radius: 5pt, stroke: rgb("#5f6368"))
+    ] #content
+  ]
+
+  = Example License Agreement <appendix-license-agreement>
+  For Catanks, we made the license agreement on Google Forms.
+  #typset-simple-form(
+    [*Catanks License Agreement*],
+    ([Enter your full name here], short-answer-full),
+    ([Enter your Github username here], short-answer-full),
+    (
+      [
+        Do you consent to the code of Catanks (and thus your work) being released under the #link("https://opensource.org/license/mpl-2-0")[MPL Version 2.0] open source license?  Code consists of scripts, scenes, materials, shaders, prefabs, and animation files.
+
+        \
+        *Explanation of the MPL License*\
+        The MPL license is an #link("https://opensource.org/osd")[open source] license that gives users the rights to modify and redistribute code and even charge for the software.  However the MPL license also stipulates any files that are used (in unmodified or  modified form) from an MPL licensed project must also be released under the MPL license.  Read more about the terms and conditions of the license #link("https://en.wikipedia.org/wiki/Mozilla_Public_License")[here].
+
+        \
+        *Why Use an Open Source License*\
+        Since we are a student club that is not planning on selling our game, it makes sense to provide our code as a learning resource for others.  Additionally, the code is already public and adding a license simply formalizes the rights and responsibilities of users of the code.
+
+        \
+        *Disagree?*\
+        If you do not consent, please reach out to a member of the UPGRADE board as soon as possible.
+
+        \
+        #underline[*Select "Yes" below if you consent to your code being released under the MPL Version 2.0 license (if you did not contribute any code to Catanks, simply select "yes")*]
+      ],
+      multiple-choice-answer([Yes]),
+    ),
+    (
+      [
+        Do you consent to the Catanks Art (and thus your work) being released under the CC BY-SA 4.0 license (except any adaptations of work originally released under the CC BY 3.0 license which will be released under the CC BY-SA 3.0 license)?  Art consists of 3D models, music, sound effects, and 2D art (such as textures or images)
+
+        \
+        *Explanation of the CC BY-SA License* \
+        From #link("https://creativecommons.org/share-your-work/cclicenses/")[Creative Commons]: "This license enables reusers to distribute, remix, adapt, and build upon the material in any medium or format, so long as attribution is given to the creator. The license allows for commercial use. If you remix, adapt, or build upon the material, you must license the modified material under identical terms."
+
+        \
+        *Disagree?* \
+        If you do not consent, please reach out to Robby, Anthony, Charles, Kevin D, or another member of the UPGRADE board as soon as possible
+
+        \
+        #underline[*Select "Yes" below if you consent to your art being released under the CC BY-SA license (if you did not contribute any art to Catanks, simply select "yes")*]
+      ],
+      multiple-choice-answer([Yes]),
+    ),
+  )
 ]
+
 #pagebreak()
+
 #main_block[
   = Example `.gitignore` <appendix-gitignore>
   #code_example[
