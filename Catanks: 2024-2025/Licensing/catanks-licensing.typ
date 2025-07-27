@@ -475,9 +475,16 @@
   If you didn't add any files to the `UIElementsSchema` Directory, one can safely gitignore it.#footnote[#link("https://discussions.unity.com/t/uielementsschema/805120")]
 ]
 #pagebreak()
-#set heading(numbering: numbly(
-  "Appendix {1:A}:",
-))
+#set heading(
+  numbering: numbly(
+    "Appendix {1:A}",
+  ),
+  supplement: none,
+)
+#show heading: it => {
+  show regex("Appendix [A-Z]"): it => [#it:]
+  it
+}
 #counter(heading).update(0)
 #main_block[
   // form typsetting
