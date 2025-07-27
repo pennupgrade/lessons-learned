@@ -485,7 +485,6 @@
   #let short-answer = [
     #set text(fill: answer-color)
     Short answer text
-
   ]
   #let short-answer-full = [
     #set par(first-line-indent: 0em)
