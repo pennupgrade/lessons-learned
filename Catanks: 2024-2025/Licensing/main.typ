@@ -495,12 +495,19 @@
 
   #let question-top-bottom-inset = 1.5em
   #let question-left-right-inset = 1em
-  #let form-question(question, response) = [#block(stroke: luma(230), width: 100%, radius: 6pt, fill: white, inset: (
-      left: question-left-right-inset,
-      right: question-left-right-inset,
-      top: question-top-bottom-inset,
-      bottom: question-top-bottom-inset,
-    ))[
+  #let form-question(question, response) = [#block(
+      stroke: luma(230),
+      width: 100%,
+      radius: 6pt,
+      fill: white,
+      breakable: false,
+      inset: (
+        left: question-left-right-inset,
+        right: question-left-right-inset,
+        top: question-top-bottom-inset,
+        bottom: question-top-bottom-inset,
+      ),
+    )[
       #question
       #v(1em)
       #response
