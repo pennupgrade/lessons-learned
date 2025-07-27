@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 exaCORE42
+//
+// SPDX-License-Identifier: CC-BY-SA-4.0
+
 #import "@preview/unequivocal-ams:0.1.2": ams-article, proof, theorem
 #import emoji: checkmark, crossmark
 #import "@preview/numbly:0.1.0": numbly
