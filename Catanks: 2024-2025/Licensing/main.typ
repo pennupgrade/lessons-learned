@@ -346,11 +346,7 @@
   ]
 
   === Modifications Made
-  If enough modifications are made to consider it a new work (the bar is fairly low, but it is more than simply cutting audio for example), the new work can be licensed under `CC BY-SA 4.0`.  It is courteous to include attribution or a link to the original work somewhere in the project (perhaps in the `README` as mentioned in the previous section).
-
-  #warning[
-    TODO: ADD WHETHER ADAPTATIONS TO CC0 STUFF CAN BE LICENSED UNDER CC BY SA
-  ]
+  If enough modifications are made to consider it a new work (the bar is fairly low, but it is more than simply cutting audio for example), the new work can be licensed under `CC BY-SA 4.0`.#footnote[#link("https://law.stackexchange.com/questions/33299/copyright-when-using-works-in-cc0-public-domain")]  It is courteous to include attribution or a link to the original work somewhere in the project (perhaps in the `README` as mentioned in the previous section).
 
   == Reused Art: CC BY 3.0 and 4.0
   === No Modifications Made
