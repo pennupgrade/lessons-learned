@@ -575,7 +575,7 @@
 
         \
         *Disagree?* \
-        If you do not consent, please reach out to Robby, Anthony, Charles, Kevin D, or another member of the UPGRADE board as soon as possible
+        If you do not consent, please reach out a member of the UPGRADE board as soon as possible
 
         \
         #underline[*Select "Yes" below if you consent to your art being released under the CC BY-SA license (if you did not contribute any art to Catanks, simply select "yes")*]
