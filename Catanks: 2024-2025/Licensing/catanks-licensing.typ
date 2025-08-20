@@ -69,7 +69,7 @@
       location: [Philadelphia, PA, 19104],
     ),
   ),
-  abstract: [After finishing development of #link("https://github.com/pennupgrade/couverture")[Catanks], UPGRADE was interested in releasing the game under an open source license.  However, due to lack of planning, this ended up being significantly harder than expected.  This paper will document what #the_author learned while licensing Catanks in the hopes that it will be useful for future UPGRADE games and other game development clubs.],
+  abstract: [After finishing development of #link("https://github.com/pennupgrade/catanks")[Catanks], UPGRADE was interested in releasing the game under an open source license.  However, due to lack of planning, this ended up being significantly harder than expected.  This paper will document what #the_author learned while licensing Catanks in the hopes that it will be useful for future UPGRADE games and other game development clubs.],
 )
 
 #let change_margin = -5em
@@ -238,7 +238,7 @@
 
   = Licensing Tips
   == Contributors as a Group
-  In Catanks, since we had many contributors, instead of having a copyright notice for each person who contributed to a file, we included a single copyright notice with the author as `The Catanks Contributors` and a file in the at the root of the repository called #link("https://github.com/pennupgrade/couverture/blob/sublevel1-merge/CONTRIBUTORS.md")[`CONTRIBUTORS.md`] that listed all the contributors.  This is a valid way to do copyright notices according to REUSE.#footnote[#link("https://reuse.software/faq/#many-copyright-statements")]
+  In Catanks, since we had many contributors, instead of having a copyright notice for each person who contributed to a file, we included a single copyright notice with the author as `The Catanks Contributors` and a file in the at the root of the repository called #link("https://github.com/pennupgrade/catanks/blob/sublevel1-merge/CONTRIBUTORS.md")[`CONTRIBUTORS.md`] that listed all the contributors.  This is a valid way to do copyright notices according to REUSE.#footnote[#link("https://reuse.software/faq/#many-copyright-statements")]
 
   == Custom Licenses <custom-license>
   To use custom licenses with REUSE, one can place their own license in the `LICENSES/` directory with the name `LicenseRef-<name>.txt`.  This license can  be referenced with the SPDX license code `LicenseRef-<name>`.#footnote[#link("https://reuse.software/faq/#custom-license")]
@@ -470,7 +470,7 @@
   I recommend excluding the TextMesh Pro documentation from your git repository (as it is uneeded).  Additionally, I recommend excluding the EmojiOne files from the TextMesh Pro files as they have a weird license.  See #rlink[@appendix-gitignore] for example additions to your `.gitignore` file.
 
   == Licensing Info in Built Game
-  Many open source licenses (such as MIT and BSD licenses for example) require the copyright text also be included with the compiled program.  To that end, ensure that a file (in Catanks we called this file `THIRD-PARTY-LICENSES.md`) is included with the compiled program and contains the text for the licenses used.  For an example, see Catanks' #link("https://github.com/pennupgrade/couverture/blob/sublevel1-merge/THIRD-PARTY-LICENSES.md")[`THIRD-PARTY-LICENSES.md`].
+  Many open source licenses (such as MIT and BSD licenses for example) require the copyright text also be included with the compiled program.  To that end, ensure that a file (in Catanks we called this file `THIRD-PARTY-LICENSES.md`) is included with the compiled program and contains the text for the licenses used.  For an example, see Catanks' #link("https://github.com/pennupgrade/catanks/blob/sublevel1-merge/THIRD-PARTY-LICENSES.md")[`THIRD-PARTY-LICENSES.md`].
   #tip[
     You do not need to include the Creative Commons attributions in this file.  Instead, you can link to a page that contains the attributions #footnote[#link("https://creativecommons.org/faq/#how-do-i-properly-attribute-material-offered-under-a-creative-commons-license")] (such as the REUSE.toml on your git repository).
   ]
